@@ -1,4 +1,4 @@
-package playwright;
+package playwright.demo;
 
 
 
@@ -11,13 +11,15 @@ public class PlaywrightBasics {
     public static void main(String[] args) {
         Playwright playwright = Playwright.create();
      LaunchOptions lp=new LaunchOptions();
-        lp.setChannel("chrome");
+        lp.setChannel("webkit");
         lp.setHeadless(false);
-            Browser browser = playwright.chromium().launch(lp);
+            Browser browser = playwright.webkit().launch(lp);
             Page page = browser.newPage();
             page.navigate("http://www.amazon.com");
             System.out.println("Page Title : "+page.title());
             System.out.println("Page URL : "+page.url());
+            browser.close();
+            playwright.close();
 
 
     }
